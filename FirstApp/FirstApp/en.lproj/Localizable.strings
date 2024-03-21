@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  FirstApp
+
+  Created by Salman on 3/20/24.
+  
+*/
+
+"ALERT" = "ALERT";
+
+"Alert Frequency" = "Alert Frequency";
+
+"Noise Threshold" = "Noise Threshold";
+
+"Start Noise Threshold" = "Start Noise Threshold";
+
+"Mark alerts as critical" = "Mark alerts as critical";
