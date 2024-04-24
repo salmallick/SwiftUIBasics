@@ -9,9 +9,9 @@ struct ContentView: View {
                     Label("Alerts", systemImage: "bell.badge.waveform.fill")
                         
                 }
-            MyTabView()
+            AIView()
                 .tabItem {
-                    Label("Speech", systemImage: "mic.fill")
+                    Label("AI", systemImage: "mic.fill")
                         .foregroundColor(.white)
                 }
             MyTabView()
@@ -25,7 +25,7 @@ struct ContentView: View {
                 }
         }
         .onAppear() {
-            UITabBar.appearance().unselectedItemTintColor = .white
+           // UITabBar.appearance().unselectedItemTintColor = .white
         }  
     }
 }

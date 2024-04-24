@@ -14,6 +14,9 @@
 		22085E672BABD5F40058841F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22085E602BABD5F40058841F /* Localizable.strings */; };
 		22085E682BABD5F40058841F /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22085E612BABD5F40058841F /* MyTabView.swift */; };
 		22085E6F2BABD7C80058841F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22085E6D2BABD7C80058841F /* Localizable.strings */; };
+		223605732BD4662900FF53B6 /* AIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223605722BD4662900FF53B6 /* AIView.swift */; };
+		223605762BD595ED00FF53B6 /* llmfarm_core in Frameworks */ = {isa = PBXBuildFile; productRef = 223605752BD595ED00FF53B6 /* llmfarm_core */; };
+		2265C1FB2BD97FCB00B1BE6F /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2265C1FA2BD97FCB00B1BE6F /* DownloadButton.swift */; };
 		2283CB9E2BA36633005646A9 /* FirstAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283CB9D2BA36633005646A9 /* FirstAppApp.swift */; };
 		2283CBA02BA36633005646A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283CB9F2BA36633005646A9 /* ContentView.swift */; };
 		2283CBA22BA36636005646A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2283CBA12BA36636005646A9 /* Assets.xcassets */; };
@@ -33,6 +36,9 @@
 		22085E6E2BABD7C80058841F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22085E702BABD7D30058841F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22085E712BABD7F50058841F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		223605722BD4662900FF53B6 /* AIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIView.swift; sourceTree = "<group>"; };
+		225217122BD9A16400217673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2265C1FA2BD97FCB00B1BE6F /* DownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
 		2283CB9A2BA36633005646A9 /* FirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2283CB9D2BA36633005646A9 /* FirstAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppApp.swift; sourceTree = "<group>"; };
 		2283CB9F2BA36633005646A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223605762BD595ED00FF53B6 /* llmfarm_core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +79,8 @@
 				22085E5E2BABD5F40058841F /* FirstAppApp.swift */,
 				22085E602BABD5F40058841F /* Localizable.strings */,
 				22085E612BABD5F40058841F /* MyTabView.swift */,
+				223605722BD4662900FF53B6 /* AIView.swift */,
+				2265C1FA2BD97FCB00B1BE6F /* DownloadButton.swift */,
 			);
 			name = FirstApp;
 			sourceTree = "<group>";
@@ -96,6 +105,7 @@
 		2283CB9C2BA36633005646A9 /* FirstApp */ = {
 			isa = PBXGroup;
 			children = (
+				225217122BD9A16400217673 /* Info.plist */,
 				2283CB9D2BA36633005646A9 /* FirstAppApp.swift */,
 				22085E622BABD5F40058841F /* FirstApp */,
 				2283CB9F2BA36633005646A9 /* ContentView.swift */,
@@ -132,6 +142,9 @@
 			dependencies = (
 			);
 			name = FirstApp;
+			packageProductDependencies = (
+				223605752BD595ED00FF53B6 /* llmfarm_core */,
+			);
 			productName = FirstApp;
 			productReference = 2283CB9A2BA36633005646A9 /* FirstApp.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +174,9 @@
 				ar,
 			);
 			mainGroup = 2283CB912BA36633005646A9;
+			packageReferences = (
+				223605742BD595ED00FF53B6 /* XCRemoteSwiftPackageReference "llmfarm_core" */,
+			);
 			productRefGroup = 2283CB9B2BA36633005646A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -195,7 +211,9 @@
 				22085E652BABD5F40058841F /* ContentView.swift in Sources */,
 				22085E662BABD5F40058841F /* FirstAppApp.swift in Sources */,
 				2283CBB12BA6ACDF005646A9 /* File.swift in Sources */,
+				223605732BD4662900FF53B6 /* AIView.swift in Sources */,
 				2283CBAF2BA525AA005646A9 /* MyTabView.swift in Sources */,
+				2265C1FB2BD97FCB00B1BE6F /* DownloadButton.swift in Sources */,
 				2283CB9E2BA36633005646A9 /* FirstAppApp.swift in Sources */,
 				22085E682BABD5F40058841F /* MyTabView.swift in Sources */,
 			);
@@ -347,11 +365,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FirstApp/FirstApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FirstApp/Preview Content\"";
+				DEVELOPMENT_TEAM = VS44Y8JD9Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FirstApp/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -383,11 +404,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FirstApp/FirstApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FirstApp/Preview Content\"";
+				DEVELOPMENT_TEAM = VS44Y8JD9Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FirstApp/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -435,6 +459,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		223605742BD595ED00FF53B6 /* XCRemoteSwiftPackageReference "llmfarm_core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/guinmoon/llmfarm_core.swift";
+			requirement = {
+				kind = revision;
+				revision = 7226a84a69361c312c997453827c609e613585fd;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		223605752BD595ED00FF53B6 /* llmfarm_core */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 223605742BD595ED00FF53B6 /* XCRemoteSwiftPackageReference "llmfarm_core" */;
+			productName = llmfarm_core;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2283CB922BA36633005646A9 /* Project object */;
 }
