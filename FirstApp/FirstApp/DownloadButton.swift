@@ -22,35 +22,43 @@ struct DownloadButton: View {
     }
     
     private func download() {
+        
         status = "downloading"
         print("Downloading model \(modelName) from \(modelUrl)")
         guard let url = URL(string: modelUrl) else { return }
-//        let fileURL = URL(string: "https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q6_K.gguf")!
         let fileURL = getFileURLFormPathStr(dir:"models",filename: filename)
-//        Task{
-//            var x = await URLSession.shared.downloadTask(with: url)
-//        }
+        
+        do {
+            try FileManager.default.createDirectory(at: fileURL.deletingLastPathComponent(), withIntermediateDirectories: true)
+        } catch {
+            
+        }
+        
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            status = "downloaded"
+            return
+        }
+
         downloadTask = URLSession.shared.downloadTask(with: url) { temporaryURL, response, error in
             if let error = error {
                 print("Salman Checkpoint")
                 print("Error: \(error.localizedDescription)")
                 return
             }
-            
-            
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
                 print("Server error!")
                 return
             }
             
+            print("temporaryURL")
+            print(temporaryURL)
             do {
                 if let temporaryURL = temporaryURL {
-                    print(temporaryURL)
+                    print("fileURL")
                     print(fileURL)
-                    
                     try FileManager.default.copyItem(atPath: temporaryURL.path, toPath: fileURL.path)
-//                    try FileManager.default.copyItem(at: temporaryURL, to: fileURL)
                     print("Writing to \(filename) completed")
+                    
                     
                     
                     //let model = Model(name: modelName, url: modelUrl, filename: filename, status: "downloaded")
