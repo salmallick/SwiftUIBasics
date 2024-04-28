@@ -18,7 +18,8 @@ public struct AIView: View {
     @State var totalOutput = 0
     @State var ai: AI?
     @State var params: ModelAndContextParams = .default
-    
+    @EnvironmentObject var aiChatModel: AIChatModel
+
     init() {
         availableStorage = getAvailableStorage()
         setupLLMFarm()
@@ -45,7 +46,11 @@ public struct AIView: View {
                 }
             }
             DownloadButton(modelName: $modelName, modelUrl:  $modelUrl, filename:  $filename, status: $status)
-            
+            if status == "downloaded"{
+                Button("Generate"){
+                    
+                }
+            }
         }
     }
     
