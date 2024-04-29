@@ -19,6 +19,7 @@ public struct AIView: View {
     @State var ai: AI?
     @State var params: ModelAndContextParams = .default
     @EnvironmentObject var aiChatModel: AIChatModel
+    public var chat: AI?
 
     init() {
         availableStorage = getAvailableStorage()
@@ -48,7 +49,21 @@ public struct AIView: View {
             DownloadButton(modelName: $modelName, modelUrl:  $modelUrl, filename:  $filename, status: $status)
             if status == "downloaded"{
                 Button("Generate"){
-                    
+                    self.chat?.model.sampleParams = ModelSampleParams.default
+                    self.chat?.model.contextParams = ModelAndContextParams.default
+                    self.chat?.chatName = "Salman"
+                    self.chat?.flagExit = false
+                    //                    self.chat?.conversation("Hello",
+                    //                        { str, time in //Predicting
+                    //                        print(str)
+                    //                        print(time)
+                    //                        },
+                    //                        { final_str in // Finish predicting
+                    //                            print(final_str)
+                    //                        })
+                }
+                    }
+
                 }
             }
         }

@@ -85,10 +85,10 @@ final class AIChatModel: ObservableObject {
         print(self.model_context_param)
         self.model_loading = false
         var system_prompt:String? = nil
-        if self.model_context_param.system_prompt != ""{
-            system_prompt = self.model_context_param.system_prompt+"\n"
-            self.messages[self.messages.endIndex - 1].header = self.model_context_param.system_prompt
-        }
+//        if self.model_context_param.system_prompt != ""{
+//            system_prompt = self.model_context_param.system_prompt+"\n"
+//            self.messages[self.messages.endIndex - 1].header = self.model_context_param.system_prompt
+//        }
         self.send(message: in_text, append_user_message:false,system_prompt:system_prompt,img_path:img_path)
     }
 
@@ -140,14 +140,9 @@ final class AIChatModel: ObservableObject {
         AIChatModel_obj_ptr = nil
         self.chat = nil
         self.chat = AI(_modelPath: modelURL,_chatName: chat_name);
-        self.chat?.loadModel(model_context_param.model_inference,
-             { progress in
-                return self.model_load_progress_callback(progress)
-             },
-            { load_result in
-                self.on_model_loaded_callback(load_result,in_text:in_text,img_path:img_path)
-            },contextParams: model_context_param)
-        return true
+        return try? self.chat?.loadModel(model_context_param.model_inference,
+                             contextParams: model_context_param)
+//        return true
     }
     
     
@@ -325,7 +320,6 @@ final class AIChatModel: ObservableObject {
             },
             { final_str in // Finish predicting
                 self.finish_completion(final_str, &message/*, messageIndex*/)
-            },
-            system_prompt:system_prompt,img_path:img_real_path)
-    }
+            })
+        }
 }
