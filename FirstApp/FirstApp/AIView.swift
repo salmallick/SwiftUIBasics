@@ -14,16 +14,12 @@ import llmfarm_core
 public struct AIView: View {
     @State private var availableStorage: Int64?
     @State private var isDownloading = false
-    let maxOutputLength = 256
-    @State var totalOutput = 0
-    @State var ai: AI?
-    @State var params: ModelAndContextParams = .default
-    @EnvironmentObject var aiChatModel: AIChatModel
-    public var chat: AI?
+    @State var isBusy = false
+    @State var generatedString = ""
+    @State var chat: AI?
 
     init() {
         availableStorage = getAvailableStorage()
-        setupLLMFarm()
     }
     @State private var modelName = "TinyLlama 1B"
     @State private var modelUrl = "https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q8_0.gguf?download=true"
@@ -34,39 +30,50 @@ public struct AIView: View {
     
    public var body: some View {
         VStack {
-            if isDownloading {
-                ProgressView("Downloading AI Model...")
-            } else if let availableStorage = availableStorage, availableStorage < 4_000_000_000 {
+//            if isBusy {
+//                ProgressView()
+//            }
+            if let availableStorage = availableStorage, availableStorage < 4_000_000_000 {
                 Text("You have \(ByteCountFormatter.string(fromByteCount: availableStorage, countStyle: .file)) of space available. 4 GB is needed")
-            } else {
-                Button(action: {
-                    isDownloading = true
-                    runLLM(prompt: "State the meaning of life")
-                }) {
-                    Text("Download AI Model")
-                }
             }
             DownloadButton(modelName: $modelName, modelUrl:  $modelUrl, filename:  $filename, status: $status)
             if status == "downloaded"{
                 Button("Generate"){
-                    self.chat?.model.sampleParams = ModelSampleParams.default
-                    self.chat?.model.contextParams = ModelAndContextParams.default
-                    self.chat?.chatName = "Salman"
-                    self.chat?.flagExit = false
-                    //                    self.chat?.conversation("Hello",
-                    //                        { str, time in //Predicting
-                    //                        print(str)
-                    //                        print(time)
-                    //                        },
-                    //                        { final_str in // Finish predicting
-                    //                            print(final_str)
-                    //                        })
-                }
-                    }
-
+                    performAIMagic()
                 }
             }
+            if generatedString != ""{
+                Text("Generated Text: " + generatedString)
+            }
         }
+    }
+    
+    func performAIMagic(){
+        let fileURL = getFileURLFormPathStr(dir:"models",filename: filename)
+        print(fileURL.path)
+        isBusy = true
+        chat = AI(_modelPath: fileURL.path, _chatName: "chat")
+        var params:ModelAndContextParams = .default
+        params.context = 4095
+        params.n_threads = 14
+        params.use_metal = true
+        var modelInference:ModelInference = ModelInference.LLama_gguf // ModelInference.GPT2
+        do{
+            var didLoad = try chat?.loadModel(modelInference, contextParams: params)//.loadModel_sync(modelInference,contextParams: params)
+            print("didLoad")
+            print(didLoad)
+        }catch {
+            print("Error getting available storage")
+        }
+
+        chat?.conversation("What's the sum of 1+2?",{ str, time in //Predicting
+                print(str)
+                print(time)
+            },                          { final_str in // Finish predicting
+                print(final_str)
+                generatedString = final_str
+                isBusy = false
+            })
     }
     
     func getAvailableStorage() -> Int64? {
@@ -82,31 +89,4 @@ public struct AIView: View {
         }
         return nil
     }
-    
-   func setupLLMFarm() {
-        params.promptFormat = .Custom
-        params.custom_prompt_format = """
-                SYSTEM: You are a helpful, respectful and honest assistant.
-                USER: {prompt}
-                ASSISTANT:
-                """
-        params.use_metal = true
-        
-        ai = AI(_modelPath: "https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q6_K.gguf", _chatName: "chat")
-       _ = try? ai?.loadModel(ModelInference.LLama_gguf, contextParams: params)
-    }
-    func mainCallback(_ str: String, _ time: Double) -> Bool {
-        print("\(str)", terminator: "")
-        totalOutput += str.count
-        
-        if totalOutput > maxOutputLength {
-            return true
-        }
-        return false
-    }
-    func runLLM(prompt: String) {
-        let output = try? ai?.model.predict(prompt, mainCallback)
-    }
-    
 }
-

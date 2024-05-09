@@ -11,6 +11,7 @@
 		2283CB852BA236A9005646A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283CB842BA236A9005646A9 /* ContentView.swift */; };
 		2283CB872BA236AC005646A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2283CB862BA236AC005646A9 /* Assets.xcassets */; };
 		2283CB8B2BA236AC005646A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2283CB8A2BA236AC005646A9 /* Preview Assets.xcassets */; };
+		76252B3F2BD9F69A00099F8F /* llmfarm_core in Frameworks */ = {isa = PBXBuildFile; productRef = 76252B3E2BD9F69A00099F8F /* llmfarm_core */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76252B3F2BD9F69A00099F8F /* llmfarm_core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +87,9 @@
 			dependencies = (
 			);
 			name = SwiftUIBasics;
+			packageProductDependencies = (
+				76252B3E2BD9F69A00099F8F /* llmfarm_core */,
+			);
 			productName = SwiftUIBasics;
 			productReference = 2283CB7F2BA236A9005646A9 /* SwiftUIBasics.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +118,9 @@
 				Base,
 			);
 			mainGroup = 2283CB762BA236A9005646A9;
+			packageReferences = (
+				76252B3D2BD9F69A00099F8F /* XCRemoteSwiftPackageReference "llmfarm_core" */,
+			);
 			productRefGroup = 2283CB802BA236A9005646A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,7 +293,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = BeAware.SwiftUIBasics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -321,7 +329,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = BeAware.SwiftUIBasics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +363,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		76252B3D2BD9F69A00099F8F /* XCRemoteSwiftPackageReference "llmfarm_core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/guinmoon/llmfarm_core.swift";
+			requirement = {
+				kind = revision;
+				revision = 7226a84a69361c312c997453827c609e613585fd;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		76252B3E2BD9F69A00099F8F /* llmfarm_core */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76252B3D2BD9F69A00099F8F /* XCRemoteSwiftPackageReference "llmfarm_core" */;
+			productName = llmfarm_core;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2283CB772BA236A9005646A9 /* Project object */;
 }
