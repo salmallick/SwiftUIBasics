@@ -16,11 +16,7 @@ struct DownloadButton: View {
     
     private func checkFileExistenceAndUpdateStatus() {
     }
-    
-    func getFileURLFormPathStr(dir:String,filename: String) -> URL {
-        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(dir).appendingPathComponent(filename)
-    }
-    
+        
     private func download() {
         
         status = "downloading"
@@ -118,3 +114,6 @@ struct DownloadButton: View {
     }
 }
 
+func getFileURLFormPathStr(dir:String,filename: String) -> URL {
+    FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(dir).appendingPathComponent(filename)
+}
