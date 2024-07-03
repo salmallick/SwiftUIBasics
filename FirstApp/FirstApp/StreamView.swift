@@ -1,8 +1,13 @@
 import SwiftUI
+import Network
 
 struct StreamView: View {
     @State private var availableStorage: Int64?
     @State private var isGenerating = false
+    @State private var isConnected = false
+
+    let monitor = NWPathMonitor()
+    let queue = DispatchQueue(label: "NetworkMonitor")
     
     var body: some View {
         VStack {
@@ -10,6 +15,10 @@ struct StreamView: View {
                 if availableStorage < 4_000_000_000 {
                     Text("You have \(ByteCountFormatter.string(fromByteCount: availableStorage, countStyle: .file)) of space available. 4 GB is needed")
                         .padding()
+                } else if !isConnected {
+                    Text("No internet connection. Please connect to WiFi or cellular data.")
+                        .padding()
+                    
                 } else {
                     Text("You have sufficient storage space.")
                         .padding()
@@ -38,6 +47,10 @@ struct StreamView: View {
         }
         .onAppear {
             availableStorage = getAvailableStorage()
+            startNetworkMonitoring()
+        }
+        .onDisappear {
+            stopNetworkMonitoring()
         }
     }
     
@@ -54,4 +67,17 @@ struct StreamView: View {
         }
         return nil
     }
-}
+    func startNetworkMonitoring() {
+            monitor.pathUpdateHandler = { path in
+                DispatchQueue.main.async {
+                    self.isConnected = path.status == .satisfied
+                }
+            }
+            monitor.start(queue: queue)
+        }
+        
+        func stopNetworkMonitoring() {
+            monitor.cancel()
+        }
+    }
+
