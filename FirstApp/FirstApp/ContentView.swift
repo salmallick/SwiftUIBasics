@@ -19,7 +19,7 @@ struct ContentView: View {
                     Label("Text", systemImage: "keyboard.fill")
                         .foregroundColor(.white)
                 }
-            MyTabView()
+            StreamView()
                 .tabItem {
                     Label("Info", systemImage: "info.circle.fill")
                 }
