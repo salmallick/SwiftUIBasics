@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,8 @@
 		2283CBA62BA36636005646A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2283CBA52BA36636005646A9 /* Preview Assets.xcassets */; };
 		2283CBAF2BA525AA005646A9 /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283CBAE2BA525AA005646A9 /* MyTabView.swift */; };
 		2283CBB12BA6ACDF005646A9 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283CBB02BA6ACDF005646A9 /* File.swift */; };
+		22C26F4C2C35D15E00F0A659 /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22C26F4B2C35D15E00F0A659 /* WhisperKit */; };
+		22C26F4E2C35D18300F0A659 /* StreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C26F4D2C35D18300F0A659 /* StreamView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,7 @@
 		2283CBA52BA36636005646A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2283CBAE2BA525AA005646A9 /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabView.swift; sourceTree = "<group>"; };
 		2283CBB02BA6ACDF005646A9 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		22C26F4D2C35D18300F0A659 /* StreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C26F4C2C35D15E00F0A659 /* WhisperKit in Frameworks */,
 				223605762BD595ED00FF53B6 /* llmfarm_core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +85,7 @@
 				22085E612BABD5F40058841F /* MyTabView.swift */,
 				223605722BD4662900FF53B6 /* AIView.swift */,
 				2265C1FA2BD97FCB00B1BE6F /* DownloadButton.swift */,
+				22C26F4D2C35D18300F0A659 /* StreamView.swift */,
 			);
 			name = FirstApp;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			name = FirstApp;
 			packageProductDependencies = (
 				223605752BD595ED00FF53B6 /* llmfarm_core */,
+				22C26F4B2C35D15E00F0A659 /* WhisperKit */,
 			);
 			productName = FirstApp;
 			productReference = 2283CB9A2BA36633005646A9 /* FirstApp.app */;
@@ -176,6 +182,7 @@
 			mainGroup = 2283CB912BA36633005646A9;
 			packageReferences = (
 				223605742BD595ED00FF53B6 /* XCRemoteSwiftPackageReference "llmfarm_core" */,
+				22C26F4A2C35D15E00F0A659 /* XCLocalSwiftPackageReference "../../WhisperKit" */,
 			);
 			productRefGroup = 2283CB9B2BA36633005646A9 /* Products */;
 			projectDirPath = "";
@@ -215,6 +222,7 @@
 				2283CBAF2BA525AA005646A9 /* MyTabView.swift in Sources */,
 				2265C1FB2BD97FCB00B1BE6F /* DownloadButton.swift in Sources */,
 				2283CB9E2BA36633005646A9 /* FirstAppApp.swift in Sources */,
+				22C26F4E2C35D18300F0A659 /* StreamView.swift in Sources */,
 				22085E682BABD5F40058841F /* MyTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +468,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		22C26F4A2C35D15E00F0A659 /* XCLocalSwiftPackageReference "../../WhisperKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../WhisperKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		223605742BD595ED00FF53B6 /* XCRemoteSwiftPackageReference "llmfarm_core" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -476,6 +491,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 223605742BD595ED00FF53B6 /* XCRemoteSwiftPackageReference "llmfarm_core" */;
 			productName = llmfarm_core;
+		};
+		22C26F4B2C35D15E00F0A659 /* WhisperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WhisperKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
